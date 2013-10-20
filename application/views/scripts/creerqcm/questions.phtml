@@ -1,0 +1,90 @@
+<div  id="sectoinTitleBar" align="center"/><h4>Création d'un Qcm</h4></div> 
+ 
+
+<!--fin tab-->
+<div id="blocqcmcreation">
+  
+    <form class="form-horizontal">
+      <div class="putspace">
+        <label class="control-label" for="inputQuestion">Intitulé</label>
+        <div class="controls">
+          <input type="text" id="inputQuestion">
+        </div>
+      </div> 
+      <div class="putspace">
+        <label class="control-label" for="inputIndications">Indications</label>
+        <div class="controls">
+          <input type="text" id="inputIndications">
+        </div>
+      </div>
+      <div class="putspace">
+        <label class="control-label" for="inputQuestion">Image d'illustration</label>
+        <div class="controls">
+          <button id="addIllustration" class="btn btn-info">Ajouter une image d'illustration</button>
+        </div>
+      </div>   
+        <br/>
+       <!--Select--> 
+       <div class="putspace">
+        <label class="control-label" for="inputIllustration">Type</label>
+        <div class="controls">
+            <select name="typeQuestion" id="typeQuestion" >
+                <option value="uniquechoice">Question à choix unique</option>
+                <option value="multiplechoice" selected>Question à choix multiples</option>
+            </select> 
+        </div>
+      </div> 
+      <hr/>
+      <div id="questionResponses">
+        <div class="controls"> 
+            <div id="responseCheckboxList" ng-controller="TodoCtrl"> 
+               <span>
+                 <input title="bonne réponse" class="correctResponse" type="checkbox"> 
+                 <input class="questionResponse" type="text" id="response1">
+                 <i class="puthandcursor icon-remove" onclick="removeMultipleResponse(this)"></i><br/>
+               </span>  
+                <span>
+                 <input title="bonne réponse" class="correctResponse" type="checkbox">  
+                 <input class="questionResponse" type="text" id="response1">
+                 <i class="puthandcursor icon-remove" onclick="removeMultipleResponse(this)"></i><br/> 
+               </span>
+               <span ng-repeat="todo in todos">
+                   <input title="bonne réponse" class="correctResponse" type="checkbox"> 
+                   <input class="questionResponse" type="text" id="response1">
+                   <i class="puthandcursor icon-remove" onclick="removeMultipleResponse(this)"></i><br/>
+               </span>  
+                <br/>
+               <a  id="addMultipleResponses" ng-click="addTodoMultipleResponse()" class="puthandcursor">Ajouter une réponse</a> 
+            </div>    
+            <div id="responseRadioList" ng-controller="TodoCtrl"> 
+               <span>
+                 <input title="bonne réponse" class="correctResponse" type="radio" name="radioUniqResponse" value=""> 
+                 <input class="questionResponse" type="text" id="response1">
+                 <i class="puthandcursor icon-remove" onclick="removeSingleResponse(this)"></i><br/>
+               </span>  
+                <span>
+                 <input title="bonne réponse" class="correctResponse" type="radio" name="radioUniqResponse" value="">  
+                 <input class="questionResponse" type="text" id="response1">
+                 <i class="puthandcursor icon-remove" onclick="removeSingleResponse(this)"></i><br/> 
+               </span>
+               <span ng-repeat="todo in todos">
+                   <input title="bonne réponse" class="correctResponse" type="radio" name="radioUniqResponse" value=""> 
+                   <input class="questionResponse" type="text" id="response1">
+                   <i class="puthandcursor icon-remove" onclick="removeSingleResponse(this)"></i><br/>
+               </span>  
+                <br/> 
+                <a  id="addSingleResponse" ng-click="addTodoSingleResponse()" class="puthandcursor">Ajouter une réponse</a> 
+              
+            </div> 
+        </div>
+      </div>    
+     <hr/>
+      <div class="controls">  
+          <button type="reset" class="btn btn-danger">Effacer</button>&nbsp;&nbsp;
+          <button type="submit" class="btn btn-primary  ">Valider</button>
+      </div> 
+    </form> 
+    
+</div>
+  
+  

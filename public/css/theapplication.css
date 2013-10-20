@@ -1,0 +1,123 @@
+body{ 
+}
+#backgroundlogin{ 
+	width:40%;
+	border:1px solid #aaa;
+	margin:2%; 
+	border-radius:5px; 
+	font-family: arial, "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+	-moz-box-shadow: 0 0 5px #999;
+	-webkit-box-shadow: 0 0 5px#999;
+	box-shadow: 0 0 5px #999;   
+        color:#555; 
+}
+ 
+/*CREATION D UN QCM*/
+
+#blocqcmfinalisation, #blocqcmparametres, #blocqcmoldquestion, #blocqcmnewquestion{
+    color:#333;
+    min-height: 20px;
+    padding: 19px;
+    margin-bottom: 20px;
+    background-color: #fdfdfd;
+    border: 1px solid #ccc;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 2px 1px rgba(1,0,0,0.02);
+    -moz-box-shadow: inset 0 2px 1px rgba(1,0,0,0.02);
+    box-shadow: inset 0 2px 1px rgba(1,0,0,0.02);
+}
+ 
+#blocqcmparametres{
+    margin-left:20px;
+}
+
+.ourcontain{
+    border:1px solid #aaa; 
+}
+
+#inputIntitule{ 
+    width:500px;  
+} 
+
+#inputIndications{
+    width:500px;
+}
+
+.questionResponse{
+    width:300px;
+}
+
+.correctResponse, .questionResponse{
+  padding:5px;
+  margin:5px;
+}
+ 
+.putspace{
+  margin:5px;  
+}
+
+.putspace2{
+  margin:9px;  
+}
+
+#addSingleResponse, #addMultipleResponses{ 
+    color:#0081c2;
+    font-weight:normal;
+}
+
+.puthandcursor{
+    cursor:pointer;
+}
+
+#sectionTitleBar{ 
+   padding-bottom:5px;
+   border-bottom:1px solid #a9a9bc;
+}
+
+/*Fin creation qcm*/
+.header{
+	background:url(images/header_bg.png) no-repeat top;
+	height:63px;
+	border-top-left-radius: 1px;
+	border-top-right-radius: 1px;
+	line-height:60px;
+	padding-left:20px;
+	text-shadow:1px 1px rgba(53,16,56,0.5);
+	color:#fff;
+	font-weight:bold;
+}
+.formbody{
+	width:400px;
+	height:240px;
+	background:url(images/formbody.png) no-repeat top;
+}
+form .text{
+	width:358px;
+	height:52px;
+	margin:20px 0 0 22px;
+	outline:none;
+	font-weight:bold;
+	padding-left:20px;
+	border:0;
+	color:#a9a9bc;
+}
+form .submit{
+	width:100px;
+	height:40px;
+	margin:20px 20px 0 22px;
+	background:url(images/login.png) no-repeat;
+	font-weight:bold;
+	text-shadow:1px 1px rgba(53,16,56,0.5);
+	color:#fff;
+	cursor:pointer;
+	border:0;
+}
+form a{
+	text-decoration:none;
+	color:#a9a9bc;
+	font-size:14px;
+	font-weight:bold;
+	text-shadow:1px 1px rgba(255,255,255,0.75);
+}

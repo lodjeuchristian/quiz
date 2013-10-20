@@ -1,0 +1,182 @@
+<div class="page-header"> <h5>Création d'un Qcm</h5></div>  
+<ul class="nav nav-pills" id="myTab">
+  <li class="active"><a href="#blocqcmnewquestion" data-toggle="tab">Créer une nouvelle question</a></li>
+  <li class=""><a href="#blocqcmoldquestion" data-toggle="tab">Ajouter une question existante</a></li>
+  <li class=""><a href="#blocqcmparametres" data-toggle="tab">Paramètres du qcm</a></li> 
+  <li class=""><a href="#blocqcmfinalisation" data-toggle="tab">Aperçu et Finalisation</a></li>
+</ul>
+
+<div id="myTabContent" class="tab-content">
+ 
+   <!-- Bloc des questions du qcm -->
+   <div class="tab-pane fade  active in" id="blocqcmnewquestion">
+     <form class="form-horizontal" method="POST" id="qcmQuestionsForm" name="qcmQuestionsForm" action="#">
+         
+      <div class="fileupload fileupload-new pull-right" data-provides="fileupload">
+        <div class="fileupload-preview thumbnail" style="width: 190px; height: 140px;"></div>
+        <div>
+          <span class="btn btn-file"><span class="fileupload-new">Image d'illustration</span><span class="fileupload-exists">Changer</span><input type="file" /></span>
+          <a href="#" class="btn fileupload-exists" data-dismiss="fileupload">Supprimer</a>
+        </div>
+      </div>
+      <div class="putspace">
+        <label class="control-label" for="inputIntitule">Intitulé</label>
+        <div class="controls">
+          <input type="text" name="inputIntitule" id="inputIntitule">
+        </div>
+      </div> 
+      <div class="putspace">
+        <label class="control-label" for="inputIndications">Indications</label>
+        <div class="controls">
+          <input type="text" name="inputIndications" id="inputIndications">
+        </div>
+      </div>   
+       <!--Select--> 
+       <div class="putspace">
+        <label class="control-label" for="inputIllustration">Type</label>
+        <div class="controls">
+            <select name="selectType" id="selectType" >
+                <option value="uniquechoice">Question à choix unique</option>
+                <option value="multiplechoice" selected>Question à choix multiples</option>
+            </select> 
+        </div>
+      </div> 
+      <hr/>
+      <div id="questionResponses">
+        <!-- Introduction du framework "angular.js" pour l'ajout dynamique des champs  -->  
+        <div class="controls"> 
+            <div id="responseCheckboxList" ng-controller="TodoCtrl"> 
+               <span>
+                 <input title="bonne réponse" name="correctMultiResponse[]" id="correctMultiResponse1" class="correctResponse" type="checkbox"> 
+                 <input class="questionResponse" type="text" name="inputMultiResponse[]" id="inputMultiResponse1">
+                 <i class="puthandcursor icon-remove" onclick="removeMultipleResponse(this)"></i><br/>
+               </span>  
+                <span>
+                 <input title="bonne réponse" name="correctMultiResponse[]" id="correctMultiResponse1"  class="correctResponse" type="checkbox">  
+                 <input class="questionResponse" type="text" name="inputMultiResponse[]" id="inputMultiResponse1">
+                 <i class="puthandcursor icon-remove" onclick="removeMultipleResponse(this)"></i><br/> 
+               </span>
+               <span ng-repeat="todo in todos">
+                   <input title="bonne réponse" name="correctMultiResponse[]" id="correctMultiResponse1"  class="correctResponse" type="checkbox"> 
+                   <input class="questionResponse" type="text" name="inputMultiResponse[]" id="inputMultiResponse1">
+                   <i class="puthandcursor icon-remove" onclick="removeMultipleResponse(this)"></i><br/>
+               </span>  
+                <br/>
+               <a  id="addMultipleResponses" ng-click="addTodoMultipleResponse()" class="puthandcursor">Ajouter une réponse</a> 
+            </div>    
+            <div id="responseRadioList" ng-controller="TodoCtrl"> 
+               <span>
+                 <input title="bonne réponse" name="correctSingleResponse[]" id="correctSingleResponse1" class="correctResponse" type="radio" name="radioUniqResponse" value=""> 
+                 <input class="questionResponse" type="text" name="inputSingleResponse[]" id="inputSingleResponse1">
+                 <i class="puthandcursor icon-remove" onclick="removeSingleResponse(this)"></i><br/>
+               </span>  
+                <span>
+                 <input title="bonne réponse" name="correctSingleResponse[]" id="correctSingleResponse1" class="correctResponse" type="radio" name="radioUniqResponse" value="">  
+                 <input class="questionResponse" type="text" name="inputSingleResponse[]" id="inputSingleResponse1">
+                 <i class="puthandcursor icon-remove" onclick="removeSingleResponse(this)"></i><br/> 
+               </span>
+               <span ng-repeat="todo in todos">
+                   <input title="bonne réponse" name="correctSingleResponse[]" id="correctSingleResponse1" class="correctResponse" type="radio" name="radioUniqResponse" value=""> 
+                   <input class="questionResponse" type="text" name="inputSingleResponse[]" id="inputSingleResponse1">
+                   <i class="puthandcursor icon-remove" onclick="removeSingleResponse(this)"></i><br/>
+               </span>  
+                <br/> 
+                <a  id="addSingleResponse" ng-click="addTodoSingleResponse()" class="puthandcursor">Ajouter une réponse</a> 
+              
+            </div> 
+        </div>
+      </div>    
+     <hr/>
+      <div class="controls">  
+          <button type="reset" class="btn btn-danger">Effacer</button>&nbsp;&nbsp;
+          <input type="submit" class="btn btn-primary"  name="ValiderCreationQuestion" value="Valider" />
+      </div> 
+    </form> 
+    
+   </div>
+   
+   <!-- Bloc ajout qestion existante --> 
+   <div class="tab-pane fade" id="blocqcmoldquestion">
+       question existante...
+
+   </div>
+   
+   <!-- Bloc des paramètres du qcm --> 
+   <div class="tab-pane fade" id="blocqcmparametres">
+    <form class="form-horizontal" method="POST" id="qcmParamForm" name="qcmParamForm" action="#">
+ 
+      <div class="putspace2">
+        <label class="control-label" for="selectTheme">Thème</label>
+        <div class="controls">
+            <select name="selectTheme" id="selectTheme">
+                <option value="">Choisir un thème</option>
+                <option value="BD">Base de données</option>
+                <option value="GL">Génie Logiciel</option>
+            </select>
+            &nbsp;&nbsp;&nbsp;&nbsp;Nouveau Thème
+            <input type="text" name="inputTheme" id="inputTheme">
+        </div>
+      </div> 
+      <div class="putspace2">
+        <label class="control-label" for="inputDescription">Description</label>
+        <div class="controls">
+          <textarea rows="2" class="span9"   name="textareatDescription" id="textareatDescription"></textarea>
+        </div>
+      </div>   
+       
+      <div class="putspace2">
+        <label class="control-label" for="radioCertification">Certification</label>
+        <div class="controls">
+          <label class="radio inline">
+            <input class="radio_buttons required inline" id="radioCertification" name="radioCertification" type="radio" value="oui">Oui</label>
+          <label class="radio inline">
+           <input class="radio_buttons required inline" id="radioCertification" name="radioCertification" type="radio" value="non" checked>Non</label>
+        </div>
+      </div>
+      <div class="putspace2">
+        <label class="control-label" for="inputDuree">Durée en minutes</label>
+        <div class="controls">
+          <input value="120" type="number" step="1" class="span2" min="0" name="inputDuree" id="inputDuree">
+        </div>
+      </div>   
+      <div class="putspace2">
+        <label class="control-label" for="inputScoreMini">Score minimal</label>
+        <div class="controls">
+          <input value="2" type="number"   class="span2"  name="inputScoreMini" id="inputScoreMini">
+        </div>
+      </div>   
+      <div class="putspace2">
+        <label class="control-label" for="inputScoreCorrect">Score bonne réponse</label>
+        <div class="controls">
+          <input value="1" type="number"  class="span2" name="inputScoreCorrect" id="inputScoreCorrect">
+        </div>
+      </div>   
+      <div class="putspace2">
+        <label class="control-label" for="inputScoreIncorrect">Score mauvaise reponse</label>
+        <div class="controls">
+          <input value="0" type="number"  class="span2" name="inputScoreIncorrect" id="inputScoreIncorrect">
+      </div>
+      </div>   
+      <div class="putspace2">
+        <label class="control-label span8" for="inputNbQuestionsExam" >Nombre de questions d'un examen</label>
+        <div class="controls">
+          <input value="20" type="number" step="1" class="span2" name="inputNbQuestionsExam" id="inputNbQuestionsExam">
+        </div>
+      </div>   
+        
+        
+     <hr/>
+      <div class="controls">  
+          <button type="reset" class="btn btn-danger">Effacer</button>&nbsp;&nbsp;
+          <input type="submit" class="btn btn-primary"  name="ValiderCreationQuestion" value="Valider" />
+      </div> 
+     
+    </form>  
+   </div>
+    
+   <!-- Bloc de la finalisation du qcm -->
+   <div class="tab-pane fade" id="blocqcmfinalisation">
+       Aperçu et Finalisation...
+
+   </div> 
+</div>

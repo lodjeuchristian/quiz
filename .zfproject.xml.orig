@@ -1,0 +1,160 @@
+<?xml version="1.0"?>
+<projectProfile type="default" version="1.12.3">
+  <projectDirectory>
+    <projectProfileFile filesystemName=".zfproject.xml"/>
+    <applicationDirectory classNamePrefix="Application_">
+      <configsDirectory>
+        <applicationConfigFile type="ini"/>
+      </configsDirectory>
+      <controllersDirectory>
+        <controllerFile controllerName="Index">
+          <actionMethod actionName="index"/>
+
+          <actionMethod actionName="upload"/>
+          <actionMethod actionName="test"/>
+
+          <actionMethod actionName="testupdate"/>
+
+        </controllerFile>
+        <controllerFile controllerName="Error"/>
+
+        <controllerFile controllerName="File">
+
+        <controllerFile controllerName="AuthController">
+
+          <actionMethod actionName="index"/>
+
+          <actionMethod actionName="upload"/>
+          <actionMethod actionName="excel"/>
+          <actionMethod actionName="excelReader"/>
+          <actionMethod actionName="reader"/>
+          <actionMethod actionName="test"/>
+
+          <actionMethod actionName="login"/>
+
+        </controllerFile>
+
+
+        <controllerFile controllerName="Auth">
+          <actionMethod actionName="index"/>
+          <actionMethod actionName="login"/>
+          <actionMethod actionName="logout"/>
+        </controllerFile>
+
+      </controllersDirectory>
+      <formsDirectory>
+
+        <formFile formName="ExcelUpload"/>
+        <formFile formName="Upload"/>
+
+        <formFile formName="Login"/>
+      </formsDirectory>
+      <layoutsDirectory>
+        <layoutScriptsDirectory>
+          <layoutScriptFile layoutName="layout"/>
+        </layoutScriptsDirectory>
+      </layoutsDirectory>
+      <modelsDirectory>
+        <modelFile modelName="Question"/>
+        <dbTableDirectory>
+          <dbTableFile dbTableName="Question"/>
+          <dbTableFile dbTableName="THEME"/>
+          <dbTableFile dbTableName="Examen"/>
+          <dbTableFile dbTableName="Prof"/>
+          <dbTableFile dbTableName="Etudiant"/>
+        </dbTableDirectory>
+        <modelFile modelName="Theme"/>
+        <modelFile modelName="Prof"/>
+        <modelFile modelName="Etudiant"/>
+      </modelsDirectory>
+      <modulesDirectory enabled="false"/>
+      <servicesDirectory enabled="false"/>
+      <viewsDirectory>
+        <viewScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Index">
+            <viewScriptFile forActionName="index"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Error">
+            <viewScriptFile forActionName="error"/>
+          </viewControllerScriptsDirectory>
+
+          <viewControllerScriptsDirectory forControllerName="Index">
+            <viewScriptFile forActionName="upload"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Index">
+            <viewScriptFile forActionName="test"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="File">
+
+          <viewControllerScriptsDirectory forControllerName="Auth">
+
+            <viewScriptFile forActionName="index"/>
+          </viewControllerScriptsDirectory>
+
+          <viewControllerScriptsDirectory forControllerName="File">
+            <viewScriptFile forActionName="upload"/>
+
+          <viewControllerScriptsDirectory forControllerName="Auth">
+            <viewScriptFile forActionName="login"/>
+
+          </viewControllerScriptsDirectory>
+
+          <viewControllerScriptsDirectory forControllerName="File">
+            <viewScriptFile forActionName="excel"/>
+
+          <viewControllerScriptsDirectory forControllerName="Auth">
+            <viewScriptFile forActionName="logout"/>
+
+          </viewControllerScriptsDirectory>
+
+          <viewControllerScriptsDirectory forControllerName="File">
+            <viewScriptFile forActionName="excelReader"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="File">
+            <viewScriptFile forActionName="reader"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="File">
+            <viewScriptFile forActionName="test"/>
+          </viewControllerScriptsDirectory>
+
+        </viewScriptsDirectory>
+        <viewHelpersDirectory/>
+        <viewFiltersDirectory enabled="false"/>
+      </viewsDirectory>
+      <bootstrapFile filesystemName="Bootstrap.php"/>
+    </applicationDirectory>
+    <dataDirectory enabled="false">
+      <cacheDirectory enabled="false"/>
+      <searchIndexesDirectory enabled="false"/>
+      <localesDirectory enabled="false"/>
+      <logsDirectory enabled="false"/>
+      <sessionsDirectory enabled="false"/>
+      <uploadsDirectory enabled="false"/>
+    </dataDirectory>
+    <docsDirectory>
+      <file filesystemName="README.txt"/>
+    </docsDirectory>
+    <libraryDirectory>
+      <zfStandardLibraryDirectory enabled="false"/>
+    </libraryDirectory>
+    <publicDirectory>
+      <publicStylesheetsDirectory enabled="false"/>
+      <publicScriptsDirectory enabled="false"/>
+      <publicImagesDirectory enabled="false"/>
+      <publicIndexFile filesystemName="index.php"/>
+      <htaccessFile filesystemName=".htaccess"/>
+    </publicDirectory>
+    <projectProvidersDirectory enabled="false"/>
+    <temporaryDirectory enabled="false"/>
+    <testsDirectory>
+      <testPHPUnitConfigFile filesystemName="phpunit.xml"/>
+      <testPHPUnitBootstrapFile filesystemName="bootstrap.php"/>
+      <testApplicationDirectory>
+        <testApplicationControllerDirectory>
+          <testApplicationControllerFile forControllerName="Index"/>
+        </testApplicationControllerDirectory>
+      </testApplicationDirectory>
+      <testLibraryDirectory/>
+    </testsDirectory>
+  </projectDirectory>
+</projectProfile>

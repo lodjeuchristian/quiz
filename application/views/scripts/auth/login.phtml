@@ -1,0 +1,77 @@
+<?php 
+	$this->loginForm->setAction($this->url());
+	
+  	if(!empty($this->errorLoginMsg)){
+		echo '<div  align="center">'; 
+	}
+	else
+	{
+		echo '<div  align="center">'; 
+	}
+	 
+
+ 
+?>	
+	<div id="backgroundlogin">
+		<form 
+			action="<?php echo $this->escape($this->loginForm->getAction())?>" 
+			method="<?php echo $this->escape($this->loginForm->getMethod())?>" 
+			enctype="<?php echo $this->escape($this->loginForm->getEnctype())?>"
+		>
+
+			<?php $this->loginForm->username->getDecorator('label')->setTag(null); ?> 
+			<?php $this->loginForm->password->getDecorator('label')->setTag(null); ?>
+			<?php $this->loginForm->typeuser->getDecorator('label')->setTag(null); ?>
+
+			 
+			<h3><?php echo $this->translate('form_login_title');?></h3>
+			<hr/>
+			
+			<div class="control-group">
+				<?php echo $this->loginForm->username->renderLabel(); ?>
+				<div class="controls">
+					<div class="input-prepend">
+					<span class="add-on"><i class="icon-user"></i></span>
+						<?php echo $this->loginForm->username->renderViewHelper(); ?> 
+					</div>
+				</div>
+			</div>
+			
+			
+			<div class="control-group">
+				<?php echo $this->loginForm->password->renderLabel(); ?> 
+				<div class="controls">
+					<div class="input-prepend">
+					<span class="add-on"><i class="icon-lock"></i></span>
+						<?php echo $this->loginForm->password->renderViewHelper(); ?> 
+					</div>
+				</div>
+			</div> 
+			 
+			<div class="control-group">
+				<?php echo $this->loginForm->typeuser->renderLabel(); ?>
+				<div class="controls"> 
+						<?php echo $this->loginForm->typeuser->renderViewHelper(); ?> 
+				</div>
+			</div>
+			<div>
+
+			<div>
+				<font color="red">
+					<?php
+						if(!empty($this->errorLoginMsg)){
+							echo $this->errorLoginMsg ;
+						}
+					?>
+				</font>
+			</div>
+			
+			<br/>
+				<?php echo $this->loginForm->submit->renderViewHelper(); ?>
+			</div> 
+
+		</form>
+	</div>
+</div>
+
+ 

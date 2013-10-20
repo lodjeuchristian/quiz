@@ -1,0 +1,222 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html ng-app>
+<head>
+	<?php echo $this->headMeta(); ?>
+	<?php echo $this->headTitle(); ?>
+	 <!-- Le styles -->
+	<?php echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->baseUrl('/img/logo2.jpg')))
+					->prependStylesheet($this->baseUrl('/css/bootstrap.min.css')) 
+					->prependStylesheet($this->baseUrl('/css/theapplication.css'))  
+                                        ->prependStylesheet($this->baseUrl('/css/bootstrap-fileupload.min.css'))
+	?>					
+
+
+
+</head>
+ 
+ 
+<body>
+
+<!-- Entete --> 
+<div class="navbar navbar-fixed-top navbar-inverse">
+  <div class="navbar-inner">
+	  <div class="container"> 
+		<a class="brand" href="./index" style="padding-top: 8px; padding-bottom: 0px;">
+	      <b style="color:#0088cc;font-weight:bold;font-family:'Bauhaus 93';font-size:25px;margin-right:-5px;">E</b>
+	      <span style="color:#555;font-size:18px;">Platform</span>
+	    </a> 
+		 
+	    <ul class="nav"> 
+			<?php 
+				if(Zend_Auth::getInstance()->hasIdentity())  
+				{  
+			?>	    	
+	    	<li class="divider-vertical"></li>   
+			<li><a href="./index"><i class="icon-home"></i>  <?php echo $this->translate('layout_menubar_label_home');?></a></li>  
+			<li class="divider-vertical"></li>  
+			<li class="dropdown">
+			    <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <?php echo $this->translate('layout_menubar_label_exam');?>
+			      <b class="caret"></b>
+			    </a>
+			    <ul class="dropdown-menu">
+			       <li><a href="./clientsformation"> <?php echo $this->translate('layout_menubar_label_create');?> </a></li>
+				    <li><a href="./formationsclient">  <?php echo $this->translate('layout_menubar_label_configure');?> </a></li>
+			       <li><a href="./formationsclient">  <?php echo $this->translate('layout_menubar_label_start');?> </a></li> 
+			    </ul>
+			</li> 
+			<li class="divider-vertical"></li> 
+			<li class="dropdown">
+			    <a href="#" class="dropdown-toggle" data-toggle="dropdown">  <?php echo $this->translate('layout_menubar_label_qcm');?>
+			      <b class="caret"></b>
+			    </a>
+			    <ul class="dropdown-menu">
+			       <li><a href="<?php echo $this->baseUrl('/');?>creerqcm"> <?php echo $this->translate('layout_menubar_label_create');?> </a></li>
+				    <li><a href="./formationsclient">  <?php echo $this->translate('layout_menubar_label_configure');?> </a></li>
+			       <li><a href="./formationsclient">  <?php echo $this->translate('layout_menubar_label_delete');?> </a></li> 
+			    </ul>
+			</li> 
+			<li class="divider-vertical"></li> 			
+			<li class="dropdown">
+			    <a href="#" class="dropdown-toggle" data-toggle="dropdown">  <?php echo $this->translate('layout_menubar_label_statistics');?>
+			      <b class="caret"></b>
+			    </a>
+			    <ul class="dropdown-menu">
+			       <li><a href="./clientsformation">  <?php echo $this->translate('layout_menubar_label_exams');?> </a></li> 
+			       <li><a href="./formationsclient">  <?php echo $this->translate('layout_menubar_label_students');?> </a></li> 
+				   <li><a href="./formationsclient">  <?php echo $this->translate('layout_menubar_label_administration');?> </a></li> 
+				   <li><a href="./formationsclient">  <?php echo $this->translate('layout_menubar_label_synthesis');?> </a></li> 
+				   <li><a href="<?php echo $this->baseUrl('/');?>/formationsclient">  <?php echo $this->translate('layout_menubar_label_customization');?> </a></li>
+			    </ul>
+			</li>  
+			<li class="divider-vertical"></li>  
+			<?php 
+				if(Zend_Auth::getInstance()->hasIdentity())  
+				{ 
+					$userInfo = Zend_Auth::getInstance()->getStorage()->read(); 
+			?>
+				<li class="dropdown">
+					<a href="<?php echo $this->baseUrl('/');?>/#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-user"></i> &nbsp; <?php  echo $userInfo->NOM_PROF; ?>
+					  <b class="caret"></b>
+					</a>
+					<ul class="dropdown-menu">
+					   <li><a href="<?php echo $this->baseUrl('/');?>/clientsformation"><i class="icon-wrench"></i> &nbsp;<?php echo $this->translate('layout_menubar_label_parameters');?></a></li> 
+					   <li><a href="<?php echo $this->baseUrl('/auth/logout');?>"><i class="icon-off"></i> &nbsp;<?php echo $this->translate('layout_menubar_label_logout');?></a></li>  
+					</ul>
+				</li> 
+			<?php	
+				} 
+			?>  
+			<li class="divider-vertical"></li> 
+			<?php
+			}
+			?>
+			<li class="dropdown">
+			    <a href="#" class="dropdown-toggle" data-toggle="dropdown">  <?php echo $this->translate('layout_menubar_label_translate');?>
+			      <b class="caret"></b>
+			    </a>
+			    <ul class="dropdown-menu"> 
+					<li>
+						<!-- Le redirectLink passé en paramètre permet de retourner sur la page courante après la traduction -->
+						<!-- On peut faire $this->link(...) car il ya un helper de vue Link avec une fonction link(...) -->
+						<!-- NB: les traductions se font uniquement dans les vues : $this->translate('var_definie_ds_le_en_et_fr.php') et pas dans le controlleur -->
+						<a href="<?php echo $this->link('language', 'language', null, array('lang' => 'en'))?>?redirectLink=<?php echo Zend_Controller_Front::getInstance()->getRequest()->getRequestUri();?>"> 
+							<img src="<?php echo $this->baseUrl('/img/ukflag.png') ?>" width="20" height="10"/>  &nbsp;&nbsp;<?php echo $this->translate('layout_menubar_label_english');?> 							 
+						</a>
+					</li>
+					<li>
+						<a href="<?php echo $this->link('language', 'language', null, array('lang' => 'fr'))?>?redirectLink=<?php echo Zend_Controller_Front::getInstance()->getRequest()->getRequestUri();?>">
+							<img src="<?php echo $this->baseUrl('/img/frflag.png') ?>" width="20" height="10"/>  &nbsp;&nbsp;<?php echo $this->translate('layout_menubar_label_french');?>
+						</a>
+					</li>   
+ 			    </ul>
+			</li>  
+			<li class="divider-vertical"></li>			
+	    </ul>
+		<?php 
+			if(Zend_Auth::getInstance()->hasIdentity())  
+			{  
+		?>	
+<!--	    <form class="navbar-search pull-right" action="">
+			<input type="text" class="input-medium search-query" placeholder="Rechercher">
+		</form> 
+-->
+		<?php
+			}
+		?>
+	 </div>
+ </div>
+</div>
+<div style="margin-bottom:3%">
+</div>
+
+<!-- Corps -->
+ 
+	 
+ 
+<div class="container-fluid">  
+
+	<?php 
+		if(Zend_Auth::getInstance()->hasIdentity())  
+		{  
+	?> 
+	<div class="row-fluid"> 
+		<!-- bloc de gauche (MENU) -->
+		<div class="span2">
+		  <div class="sidebar-nav">
+			<ul class="nav nav-list">
+			  <li class="nav-header"><?php echo $this->translate('layout_menubar_label_exam');?></li>
+				   <li><a href="./clientsformation"> <?php echo $this->translate('layout_menubar_label_create');?> </a></li>
+				   <li><a href="./formationsclient">  <?php echo $this->translate('layout_menubar_label_configure');?> </a></li>
+				   <li><a href="./formationsclient">  <?php echo $this->translate('layout_menubar_label_start');?> </a></li>
+			  <hr/>
+			  <li class="nav-header"><?php echo $this->translate('layout_menubar_label_qcm');?></li>
+				   <li><a href="<?php echo $this->baseUrl('/');?>creerqcm"> <?php echo $this->translate('layout_menubar_label_create');?> </a></li>
+				   <li><a href="./formationsclient">  <?php echo $this->translate('layout_menubar_label_configure');?> </a></li>
+				   <li><a href="./formationsclient">  <?php echo $this->translate('layout_menubar_label_delete');?> </a></li> 
+			  <hr/>
+			  <li class="nav-header"><?php echo $this->translate('layout_menubar_label_statistics');?></li>
+				   <li><a href="./clientsformation">  <?php echo $this->translate('layout_menubar_label_exams');?> </a></li> 
+				   <li><a href="./formationsclient">  <?php echo $this->translate('layout_menubar_label_students');?> </a></li> 
+				   <li><a href="./formationsclient">  <?php echo $this->translate('layout_menubar_label_administration');?> </a></li> 
+				   <li><a href="./formationsclient">  <?php echo $this->translate('layout_menubar_label_synthesis');?> </a></li> 
+				   <li><a href="<?php echo $this->baseUrl('/');?>/formationsclient">  <?php echo $this->translate('layout_menubar_label_customization');?> </a></li>				   
+			</ul>
+		  </div><!--/.well -->
+		</div><!--/span-->
+		<!-- FIN MENU -->
+ 
+ 
+		<!--bloc du centre -->
+		<div class="span8">
+			<?php echo $this->layout()->content; ?>
+		</div>
+
+		
+		<!--bloc de droite -->
+		<div class="span2">
+			<br/><br/><br/>
+			Widgets
+			<hr/>
+			
+			<br/><br/><br/>
+			Widgets
+			<hr/>
+			 
+		</div> 
+ 	 
+		 
+	</div>
+	<?php 
+		}
+		else
+		{
+		  echo $this->layout()->content; 	
+		}
+	?> 	 
+	
+	 <!-- Pied de page -->  
+	<div class="footer">
+		  <div id="footer" align="center">   
+			  <hr/>
+			  &copy; Copyright 2013 | Exam Platform - Lodjeu - Libam -Ntieche
+		  </div>
+	</div>
+	
+</div>
+
+
+
+<!-- Scripts -->
+<?php echo $this->headScript()->prependFile($this->baseUrl('/js/html5.js') , 'text/javascript', array('conditional' => 'lt IE 9',))
+							  ->prependFile($this->baseUrl('/js/bootstrap.min.js') , 'text/javascript' )
+							  ->prependFile($this->baseUrl('/js/jquery-1.9.1.min.js') , 'text/javascript') 	
+                                                          ->prependFile($this->baseUrl('/js/angular.min.js') , 'text/javascript') 
+                                                          
+?>
+<script type="text/javascript" src="<?php echo $this->baseUrl('/js/bootstrap-fileupload.min.js'); ?>">  
+</script>
+<script type="text/javascript" src="<?php echo $this->baseUrl('/js/theapplication.js'); ?>">  
+</script>
+
+</body>
+</html> 
